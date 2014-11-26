@@ -1,0 +1,108 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="payment-item" attributes="transaction-id name amount raw-amount currency percent frequency recurs-day">
+    <template>
+        <style>
+            :host {
+                display: block;
+                color: #686868;
+                font-family: sans-serif;
+
+                position: relative;
+                font-size: 17px;
+
+                min-height: 65px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                padding: 20px;
+
+                border-radius: 2px;
+
+                background: #FFFFFF;
+                -moz-box-shadow:    1px 3px 8px 0px rgba(0, 0, 0, 0.3);
+                -webkit-box-shadow: 1px 3px 8px 0px rgba(0, 0, 0, 0.3);
+                box-shadow:         1px 3px 8px 0px rgba(0, 0, 0, 0.3);
+            }
+
+            .mio-card-title {
+                font-size: 16px;
+            }
+
+            .mio-card-close {
+                position: absolute;
+                top: 2px;
+                right: 2px;
+                background: none;
+                border: none;
+                color: #aaa;
+                padding: 0 5px;
+                font-size: 27px;
+                font-weight: 100;
+                font-family: Helvetica, sans-serif;
+                transition: color 100ms ease-in;
+                z-index: 1;
+            }
+
+            .mio-card-close:hover {
+                color: #333;
+            }
+
+            .mio-card-close:active,
+            .mio-card-close:focus {
+                outline: none;
+                color: #222;
+            }
+
+            .mio-card-pie:after {
+                content: " ";
+                display: block;
+                border: 5px solid #eee;
+                border-radius: 50%;
+                height: 60px;
+                width: 60px;
+                position: absolute;
+                top: 0;
+            }
+
+            .mio-card-amount {
+                font-size: 23px;
+                margin-bottom: 5px;
+            }
+
+            #clickable:hover {
+                color: #222;
+                cursor: pointer;
+            }
+
+            #clickable:focus {
+                outline: none;
+            }
+        </style>
+
+        <div class="mio-card">
+            <div id="clickable" tabindex="0" on-click="{{editPayment}}">
+                <div class="mio-card-amount">{{ currency }}{{ amount }}</div>
+
+                <div class="mio-card-title">{{ name }}</div>
+            </div>
+
+            <button class="mio-card-close" on-click="{{deletePayment}}">&times;</button>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            editPayment: function(e) {
+                this.fire('edit', this);
+            },
+
+            deletePayment: function(e) {
+                var sure = confirm("Are you sure you want to delete this?");
+                if(sure) {
+                    this.fire('delete', this);
+                    this.remove();
+
+                }
+            }
+        });
+    </script>
+</polymer-element>

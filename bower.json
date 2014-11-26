@@ -1,0 +1,24 @@
+{
+  "name": "payment-item",
+  "version": "0.0.0",
+  "dependencies": {
+    "platform": "Polymer/platform#^0.4.0"
+  },
+  "homepage": "https://github.com/moneyio/payment-item",
+  "authors": [
+    "James Broad <james@moneyio.co.uk>"
+  ],
+  "description": "A Web Component element for moneyio.co.uk, used to represent payment/transactions",
+  "keywords": [
+    "webcomponent",
+    "customelement"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
